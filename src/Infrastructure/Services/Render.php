@@ -33,6 +33,12 @@ class Render
 
     protected function includeRender(string $__viewFile, array $__params = []): void
     {
-        RenderHelper::includeRender($__viewFile, $__params + ['view' => $this]);
+        $this->includeTemplate($__viewFile, $__params + ['view' => $this]);
+    }
+    
+    protected function includeTemplate(string $__viewFile, array $__params = []): void
+    {
+        extract($__params);
+        include $__viewFile;
     }
 }

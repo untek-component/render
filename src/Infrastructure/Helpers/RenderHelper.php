@@ -3,6 +3,9 @@
 namespace Untek\Component\Render\Infrastructure\Helpers;
 
 use ReflectionClass;
+use Untek\Core\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 /**
  * Class RenderHelper

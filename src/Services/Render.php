@@ -3,6 +3,9 @@
 namespace Untek\Component\Render\Services;
 
 use Untek\Component\Render\Infrastructure\Helpers\RenderHelper;
+use Untek\Core\Code\Helpers\DeprecateHelper;
+
+DeprecateHelper::hardThrow();
 
 /**
  * Class Render
@@ -32,6 +35,12 @@ class Render
 
     protected function includeRender(string $__viewFile, array $__params = []): void
     {
-        RenderHelper::includeRender($__viewFile, $__params + ['view' => $this]);
+        $this->includeTemplate($__viewFile, $__params + ['view' => $this]);
+    }
+
+    protected function includeTemplate(string $__viewFile, array $__params = []): void
+    {
+        extract($__params);
+        include $__viewFile;
     }
 }
